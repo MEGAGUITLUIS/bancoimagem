@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minha Galeria de Imagens</title>
     <style>
+        /* Estilos do professor - pode copiar tudo */
         body {
             font-family: Arial, sans-serif;
             max-width: 1200px;
@@ -65,98 +66,67 @@
             text-align: center;
             color: #856404;
         }
-        
-        /* Novo estilo para debug */
-        .debug {
-            background: #e3f2fd;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            font-family: monospace;
-            font-size: 12px;
-        }
     </style>
 </head>
 <body>
     <h1>📷 Minha Galeria de Imagens</h1>
     
     <div class="aviso">
-        <strong>Modo Debug Ativado</strong>
-        <p>Abra o Console do Navegador (F12 → Console) para ver erros</p>
-    </div>
-    
-    <div class="debug">
-        <strong>Links sendo usados:</strong><br>
-        1. https://drive.google.com/uc?id=1AXjy0JKt7a4FWXw-kgBB-5pEJlYZKvRv<br>
-        2. https://drive.google.com/uc?id=1rKL3kkLFsnr1sWl4c2slA4LxtpaxWxyI<br>
-        3. https://drive.google.com/uc?id=1AXjy0JKt7a4FWXw-kgBB-5pEJlYZKvRv
+        <strong>Como adicionar mais imagens:</strong>
+        <p>1. Adicione imagens ao Google Drive</p>
+        <p>2. Torne cada imagem pública</p>
+        <p>3. Mude o link para: https://drive.google.com/uc?id=SEU_ID_AQUI</p>
+        <p>4. Cole o link abaixo no lugar dos exemplos</p>
     </div>
     
     <div class="galeria">
-        <!-- IMAGEM 1 - CORRIGIDA -->
+        <!-- EXEMPLO 1 - Substitua este bloco -->
         <div class="item-imagem">
-            <img src="https://drive.google.com/uc?id=1AXjy0JKt7a4FWXw-kgBB-5pEJlYZKvRv" 
+            <img src="https://drive.google.com/uc?id=1AXjy0JKt7a4FWXw-kgBB-5pEJlYZKvRv"
+
                  class="imagem" 
-                 alt="Imagem 1"
-                 id="img1">
-            <div class="legenda">Imagem 1</div>
+                 alt="Descrição da imagem 1">
+            <div class="legenda">Imagem 1 - Sua descrição aqui</div>
         </div>
         
-        <!-- IMAGEM 2 -->
+        <!-- EXEMPLO 2 -->
         <div class="item-imagem">
             <img src="https://drive.google.com/uc?id=1rKL3kkLFsnr1sWl4c2slA4LxtpaxWxyI" 
                  class="imagem" 
-                 alt="Imagem 2"
-                 id="img2">
-            <div class="legenda">Imagem 2</div>
+                 alt="Descrição da imagem 2">
+            <div class="legenda">Imagem 2 - Sua descrição aqui</div>
         </div>
         
-        <!-- IMAGEM 3 -->
+        <!-- EXEMPLO 3 -->
         <div class="item-imagem">
             <img src="https://drive.google.com/uc?id=1AXjy0JKt7a4FWXw-kgBB-5pEJlYZKvRv" 
                  class="imagem" 
-                 alt="Imagem 3"
-                 id="img3">
-            <div class="legenda">Imagem 3 (mesma da 1)</div>
+                 alt="Descrição da imagem 3">
+            <div class="legenda">Imagem 3 - Sua descrição aqui</div>
         </div>
+        
+        <!-- ADICIONE MAIS BLOCOS AQUI -->
+        <!-- Copie e cole o bloco acima, mudando apenas o ID e descrição -->
     </div>
     
     <script>
+        // Script simples para melhorar a experiência
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('=== DEBUG GALERIA ===');
-            
             const imagens = document.querySelectorAll('.imagem');
             
-            imagens.forEach((imagem, index) => {
-                // Adiciona loading lazy
+            imagens.forEach(imagem => {
+                // Adiciona loading lazy para melhor performance
                 imagem.loading = 'lazy';
                 
-                // Log para debug
-                console.log(`Imagem ${index + 1}:`, imagem.src);
-                
-                // Verifica se carregou
-                imagem.onload = function() {
-                    console.log(`✓ Imagem ${index + 1} carregada com sucesso`);
-                };
-                
-                // Trata erro
+                // Adiciona mensagem de erro se imagem não carregar
                 imagem.onerror = function() {
-                    console.error(`✗ ERRO na imagem ${index + 1}:`, this.src);
-                    this.alt = '⚠️ Erro ao carregar';
+                    this.alt = '⚠️ Imagem não carregada - Verifique o link';
                     this.style.backgroundColor = '#f8d7da';
-                    this.style.border = '2px solid red';
-                    
-                    // Mostra mensagem para usuário
-                    const legenda = this.parentNode.querySelector('.legenda');
-                    if (legenda) {
-                        legenda.innerHTML = 'ERRO: Verifique o link';
-                        legenda.style.color = 'red';
-                    }
                 };
             });
             
-            console.log('Total de imagens:', imagens.length);
-            console.log('=== FIM DEBUG ===');
+            console.log('Galeria carregada com sucesso!');
+            console.log('Imagens encontradas:', imagens.length);
         });
     </script>
 </body>
